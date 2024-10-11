@@ -6,7 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    Olá
-    <a href="/pessoa"><b>Clique Aqui</b></a> para ver as informações da pessoa
+    <b>LOGIN</b>
+    <br>
+    <form method="POST">
+        <label for="nome">Usuário: </label>
+        <br>
+        <input type="text" name="nome">
+        <br>
+        <label for="senha">Senha: </label>
+        <br>
+        <input type="password" name="senha">
+        <br>
+        <button type="submit">Confimar</button>
+    </form>
+    {% if error %}
+        {{error}}
+    {% endif %}
 </body>
 </html>

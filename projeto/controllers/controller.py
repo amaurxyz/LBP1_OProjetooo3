@@ -1,13 +1,20 @@
-from flask import Blueprint, render_template
-from models.model import pessoa
+from flask import Blueprint, render_template, request, redirect, url_for
+from models.model import validacao
 
-pessoaController = Blueprint('pessoaController', __name__)
+loginController = Blueprint('loginController', __name__)
 
-
-@pessoaController.route("/")
-def hello_world():
+@loginController.route("/", methods=['GET','POST'])
+def login():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        senha = request.form['senha']
+        if validacao(nome, senha):
+            return redirect(url_for('loginController.dashboard'))
+        else:
+            error = 'Credências Erradas'
+            return render_template("index.html", error=error)
     return render_template("index.html")
 
-@pessoaController.route("/pessoa")
-def exibir_pessoa():
-    return render_template("pessoa.html", pessoa=pessoa)
+@loginController.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")

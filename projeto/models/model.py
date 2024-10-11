@@ -1,6 +1,2 @@
-class Pessoa:
-    def __init__ (self, nome, idade):
-        self.nome = nome
-        self.idade = idade
-
-pessoa = Pessoa('Marcelo', 16)
+def validacao(nome, senha):
+    return nome == 'igor' and senha == 'ifsp1234'
