@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request,session
 from controllers.controller import loginController
 from datetime import timedelta
 
@@ -9,7 +9,7 @@ app.permanent_session_lifetime = timedelta(minutes=5)
 
 @app.before_request
 def log_request_info():
-    print(f'Método: {request.method}, URL: {request.url}')
+    print(f'MÃ©todo: {request.method}, URL: {request.url}')
 
 app.register_blueprint(loginController)
 
