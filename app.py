@@ -3,7 +3,6 @@ from controllers.controller import loginController
 from datetime import timedelta
 
 app = Flask(__name__)
-app.secret_key = 'ifsp'
 app.permanent_session_lifetime = timedelta(days=1)
 
 @app.before_request
