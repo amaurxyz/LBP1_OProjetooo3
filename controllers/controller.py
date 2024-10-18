@@ -18,6 +18,6 @@ def login():
 
 @loginController.route("/dashboard")
 def dashboard():
-    if 'logged_in' in session:
+    if 'logged' in session: 
         return render_template("dashboard.html")
     return redirect(url_for('loginController.login'))
