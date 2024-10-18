@@ -9,7 +9,7 @@ def login():
         nome = request.form['nome']
         senha = request.form['senha']
         if validacao(nome, senha):
-            session['logged_in'] = True
+            session['logged'] = True
             return redirect(url_for('loginController.dashboard'))
         else:
             error = 'Credenciais Erradas'
