@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paginação com Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Produtos</h1>
+
+    <!-- Lista de Produtos -->
+    <ul>
+        {% for produto in p %}
+            <li>
+                <strong>{{ produto.nome }}</strong> 
+                <button 
+                    class="open-modal-btn" 
+                    data-nome="{{ produto.nome }}" 
+                    data-descricao="{{ produto.descricao }}"
+                >
+                    Ver Detalhes
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <button class="close-modal-btn" id="closeModal">X</button>
+            <strong id="modal-nome"></strong>
+            <p id="modal-descricao"></p>
+        </div>
+    </div>
+
+    <!-- Navegação entre páginas -->
+    <div>
+        {% if page > 1 %}
+            <a href="/?page={{ page - 1 }}">Página Anterior</a>
+        {% endif %}
+        
+        <span>Página {{ page }} de {{ total_paginas }}</span>
+        
+        {% if page < total_paginas %}
+            <a href="/?page={{ page + 1 }}">Próxima Página</a>
+        {% endif %}
+    </div>
+
+    <!-- Script JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
