@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Gerenciar Categorias</h1>
+
+<!-- Formulário para adicionar categoria -->
+<div class="card mb-4">
+    <div class="card-header">Adicionar Nova Categoria</div>
+    <div class="card-body">
+        <form action="/categorias/adicionar" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Lista de categorias -->
+<h2>Categorias Cadastradas</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for categoria in categorias %}
+        <tr>
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nome }}</td>
+            <td>
+                <a href="/categorias/editar/{{ categoria.id }}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="/categorias/excluir/{{ categoria.id }}" class="btn btn-sm btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
