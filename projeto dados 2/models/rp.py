@@ -1,3 +1,6 @@
+from model import Livro, Autor, Categoria
+from dao import BaseDAO
+
 class LivroRepository(BaseDAO):
     def __init__(self):
         super().__init__(Livro)

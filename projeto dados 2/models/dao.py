@@ -1,3 +1,5 @@
+from app import db
+
 class BaseDAO:
     def __init__(self, model):
         self.model = model
@@ -13,11 +15,7 @@ class BaseDAO:
         db.session.delete(objeto)
         db.session.commit()
 
-    def buscar_por_id(self, título, autor, categoria, isbn):
-        return self.model.query.get(titulo)
-        return self.model.query.get(autor)
-        return self.model.query.get(categoria)
-        return self.model.query.get(isbn)
-
+    def buscar_por_id(self, titulo, autor, categoria, isbn):
+        return self.model.query.get(titulo, autor, categoria, isbn)
     def listar_todos(self):
         return self.model.query.all()

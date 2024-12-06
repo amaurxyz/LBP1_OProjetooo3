@@ -1,4 +1,4 @@
-from database import db
+from app import db
 
 
 class Autor(db.Model):
@@ -39,7 +39,4 @@ class Livro(db.Model):
     def _repr__(self):
         return f"<Nome {self.titulo}>"
 
-    categorias = db.relationship('Civro', backref='livros', lazy=True)
-
-with app.app_context():
-    db.create_all()
+    categorias = db.relationship('Livro', backref='livros', lazy=True)
